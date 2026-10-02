@@ -39,6 +39,12 @@ flowchart LR
     ENC -->|"A / B"| MCU
 ```
 
+## Integración del sistema — Fusion 360
+
+Se utiliza un ensamble independiente en **Fusion 360** para revisar el controlador dentro del sistema, representando físicamente el motor DC de referencia y el módulo ESP32-C6 removible. Esta vista complementa el modelo 3D de EasyEDA al mostrar la relación entre la PCB y el hardware que la rodea.
+
+El ensamble sirve como referencia de integración para acceso a conectores, orientación del módulo y empaquetado general antes de fabricar el prototipo. No se presenta como validación de ajuste físico definitivo hasta ensamblar y comprobar la PCB fabricada.
+
 ## Arquitectura de hardware
 
 | Función | Implementación |
