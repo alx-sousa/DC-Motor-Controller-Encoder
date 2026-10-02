@@ -10,6 +10,12 @@ REV A was developed to move beyond module-based prototyping and design the main 
 
 > **REV A** is the first hardware revision. Schematic capture, PCB routing, DRC and 3D review are complete. Prototype fabrication and hardware bring-up are the next phase.
 
+<p align="center">
+  <img src="docs/images/rev-a/pcb-3d-perspective.png" width="780" alt="DC Motor Controller with Encoder REV A — EasyEDA Pro 3D view">
+</p>
+
+*REV A two-layer PCB in EasyEDA Pro, integrating protected 12 V input, component-level buck conversion, motor drive, encoder interface and removable ESP32-C6 control.*
+
 ## Engineering scope
 
 - 12 V protected power input with fuse, reverse-polarity P-channel MOSFET and TVS protection.
@@ -41,11 +47,23 @@ flowchart LR
 
 The board separates the high-current motor path, switching regulator, input protection and MCU/encoder interface into distinct functional areas to keep routing understandable and bring-up friendly.
 
+<p align="center">
+  <img src="docs/images/rev-a/schematic-overview.png" width="900" alt="REV A complete schematic overview">
+</p>
+
+*Complete REV A schematic showing the motor driver, protected power input, 12 V → 5 V buck stage and MCU/encoder interface.*
+
 ## System integration — Fusion 360
 
 A separate **Fusion 360 assembly** is used to review the controller in system context with the reference DC motor and the removable ESP32-C6 module represented as physical components. This view complements the EasyEDA PCB model by showing how the electrical design relates to the real hardware around it.
 
 The assembly is used as a mechanical/integration reference for connector access, module orientation and overall packaging before prototype fabrication. It is not presented as proof of final physical fit until the fabricated PCB is assembled and checked.
+
+<p align="center">
+  <img src="docs/images/rev-a/fusion360-system-assembly.png" width="850" alt="Fusion 360 system assembly with DC motor, PCB and ESP32-C6">
+</p>
+
+*Fusion 360 system-level assembly used to review the PCB together with the reference motor and removable ESP32-C6 module.*
 
 ## Hardware architecture
 
@@ -95,6 +113,12 @@ The driver section includes:
 
 The current-limit network establishes the intended regulation threshold for REV A, but continuous current capability will be evaluated during physical bring-up together with device temperature.
 
+<p align="center">
+  <img src="docs/images/rev-a/motor-driver-detail.png" width="850" alt="DRV8871 motor-driver PCB layout detail with PowerPAD thermal vias">
+</p>
+
+*DRV8871 power stage showing local decoupling, bulk capacitance, motor-current routing and the exposed-pad thermal-via implementation.*
+
 ## Encoder and MCU interface
 
 The reference motor uses a two-channel incremental Hall encoder. REV A powers the encoder from the ESP32's **3.3 V rail** and routes channels A/B through simple input-conditioning networks before reaching the MCU.
@@ -119,6 +143,14 @@ Power and signal tracks use different widths according to their expected role. L
 Both Top and Bottom layers include GND copper pours. GND stitching vias connect the planes across the board, while dedicated thermal vias under the DRV8871 PowerPAD provide an electrical and thermal path to the lower GND plane.
 
 External connectors are positioned near board edges to simplify wiring and bench access.
+
+<p align="center">
+  <img src="docs/images/rev-a/pcb-layout-2d.png" width="850" alt="REV A two-layer PCB layout in EasyEDA Pro">
+</p>
+
+*Complete REV A layout showing functional zoning, power/signal routing, GND copper regions, stitching vias and component placement.*
+
+**Additional engineering views:** [Bottom 3D](docs/images/rev-a/pcb-3d-bottom.png) · [Input protection](docs/images/rev-a/input-protection-detail.png) · [Buck converter](docs/images/rev-a/buck-converter-detail.png) · [MCU / encoder](docs/images/rev-a/mcu-encoder-detail.png) · [Fusion 360 top view](docs/images/rev-a/fusion360-system-top-view.png)
 
 ## Design verification
 

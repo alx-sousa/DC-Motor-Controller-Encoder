@@ -10,6 +10,12 @@ REV A se desarrolló para avanzar más allá de la integración de módulos come
 
 > **REV A** corresponde a la primera revisión de hardware. El esquemático, routing, DRC y revisión 3D están completos. La fabricación del prototipo y el bring-up físico son la siguiente fase.
 
+<p align="center">
+  <img src="docs/images/rev-a/pcb-3d-perspective.png" width="780" alt="DC Motor Controller with Encoder REV A — vista 3D en EasyEDA Pro">
+</p>
+
+*PCB REV A de dos capas en EasyEDA Pro, integrando entrada protegida de 12 V, conversión buck a nivel de componente, control de motor, interfaz de encoder y ESP32-C6 removible.*
+
 ## Alcance de ingeniería
 
 - Entrada de 12 V protegida mediante fusible, MOSFET P-channel contra polaridad inversa y TVS.
@@ -39,11 +45,23 @@ flowchart LR
     ENC -->|"A / B"| MCU
 ```
 
+<p align="center">
+  <img src="docs/images/rev-a/schematic-overview.png" width="900" alt="Esquemático completo REV A">
+</p>
+
+*Esquemático completo de REV A con driver de motor, entrada protegida, etapa buck 12 V → 5 V e interfaz MCU/encoder.*
+
 ## Integración del sistema — Fusion 360
 
 Se utiliza un ensamble independiente en **Fusion 360** para revisar el controlador dentro del sistema, representando físicamente el motor DC de referencia y el módulo ESP32-C6 removible. Esta vista complementa el modelo 3D de EasyEDA al mostrar la relación entre la PCB y el hardware que la rodea.
 
 El ensamble sirve como referencia de integración para acceso a conectores, orientación del módulo y empaquetado general antes de fabricar el prototipo. No se presenta como validación de ajuste físico definitivo hasta ensamblar y comprobar la PCB fabricada.
+
+<p align="center">
+  <img src="docs/images/rev-a/fusion360-system-assembly.png" width="850" alt="Ensamble del sistema en Fusion 360 con motor DC, PCB y ESP32-C6">
+</p>
+
+*Ensamble a nivel de sistema en Fusion 360 para revisar la PCB junto con el motor de referencia y el módulo ESP32-C6 removible.*
 
 ## Arquitectura de hardware
 
@@ -84,6 +102,12 @@ La etapa incluye desacoplo local, capacitor bulk, programación externa de limit
 
 La capacidad térmica y el comportamiento de corriente serán medidos durante el bring-up físico.
 
+<p align="center">
+  <img src="docs/images/rev-a/motor-driver-detail.png" width="850" alt="Detalle del layout del driver DRV8871 con thermal vias del PowerPAD">
+</p>
+
+*Etapa de potencia DRV8871 mostrando desacoplo local, capacitor bulk, routing de corriente del motor y thermal vias del exposed pad.*
+
 ## Encoder y MCU
 
 El encoder Hall incremental proporciona canales A/B. REV A lo alimenta a **3.3 V** y acondiciona ambas señales antes de llevarlas al ESP32.
@@ -99,6 +123,14 @@ La placa se dividió en cuatro zonas funcionales:
 Se utilizaron anchos de pista distintos para señales, alimentación lógica y rutas de potencia. Los planos de GND ocupan Top y Bottom, unidos mediante stitching vias. El exposed pad del DRV8871 utiliza thermal vias dedicadas hacia el plano inferior.
 
 Los conectores externos se mantuvieron principalmente en los bordes para facilitar cableado y pruebas de banco.
+
+<p align="center">
+  <img src="docs/images/rev-a/pcb-layout-2d.png" width="850" alt="Layout completo de la PCB REV A en EasyEDA Pro">
+</p>
+
+*Layout completo de REV A mostrando zonificación funcional, routing de potencia/señal, copper regions GND, stitching vias y placement.*
+
+**Vistas técnicas adicionales:** [Bottom 3D](docs/images/rev-a/pcb-3d-bottom.png) · [Protección de entrada](docs/images/rev-a/input-protection-detail.png) · [Buck converter](docs/images/rev-a/buck-converter-detail.png) · [MCU / encoder](docs/images/rev-a/mcu-encoder-detail.png) · [Vista superior Fusion 360](docs/images/rev-a/fusion360-system-top-view.png)
 
 ## Verificación del diseño
 
