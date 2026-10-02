@@ -41,6 +41,12 @@ flowchart LR
 
 The board separates the high-current motor path, switching regulator, input protection and MCU/encoder interface into distinct functional areas to keep routing understandable and bring-up friendly.
 
+## System integration — Fusion 360
+
+A separate **Fusion 360 assembly** is used to review the controller in system context with the reference DC motor and the removable ESP32-C6 module represented as physical components. This view complements the EasyEDA PCB model by showing how the electrical design relates to the real hardware around it.
+
+The assembly is used as a mechanical/integration reference for connector access, module orientation and overall packaging before prototype fabrication. It is not presented as proof of final physical fit until the fabricated PCB is assembled and checked.
+
 ## Hardware architecture
 
 | Function | Implementation |
