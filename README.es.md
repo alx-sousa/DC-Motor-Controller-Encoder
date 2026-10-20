@@ -21,7 +21,7 @@ REV A se desarrolló para avanzar más allá de la integración de módulos come
 - Entrada de 12 V protegida mediante fusible, MOSFET P-channel contra polaridad inversa y TVS.
 - Buck 12 V → 5 V basado en TPS54302 y diseñado con sus componentes externos.
 - Driver DRV8871 con red de limitación de corriente, desacoplo, capacitor bulk y diseño térmico del exposed pad.
-- Interfaz para encoder Hall incremental A/B compatible con lógica de 3.3 V.
+- Interfaz prevista para encoder Hall incremental A/B a 3.3 V, con resistencias serie y pull-ups; la variante exacta del encoder y su etapa de salida deben verificarse.
 - ESP32-C6 Super Mini removible mediante headers para programación, depuración y sustitución.
 - PCB de dos capas con zonificación funcional, routing diferenciado de potencia/señal, planos GND, stitching vias y thermal vias.
 - DRC limpio y revisión 3D en EasyEDA Pro.
@@ -73,7 +73,7 @@ El ensamble sirve como referencia de integración para acceso a conectores, orie
 | Limitación de corriente | Red ILIM externa |
 | Alimentación lógica | Buck Texas Instruments TPS54302DDCR |
 | MCU | ESP32-C6 Super Mini removible |
-| Encoder | Interfaz Hall incremental A/B a 3.3 V |
+| Encoder | Interfaz Hall incremental A/B prevista a 3.3 V; variante exacta/salida por verificar |
 | PCB | 2 capas · FR-4 · 1.6 mm · cobre 1 oz |
 
 ## Entrada y protección
@@ -110,7 +110,7 @@ La capacidad térmica y el comportamiento de corriente serán medidos durante el
 
 ## Encoder y MCU
 
-El encoder Hall incremental proporciona canales A/B. REV A lo alimenta a **3.3 V** y acondiciona ambas señales antes de llevarlas al ESP32.
+El encoder Hall incremental proporciona canales A/B. REV A está diseñada para alimentarlo a **3.3 V** y acondicionar ambas señales antes de llevarlas al ESP32. La variante exacta del encoder y su etapa de salida deben verificarse antes de la operación física.
 
 El ESP32-C6 Super Mini es removible y recibe 5V_LOGIC, controla las entradas del driver y adquiere los canales del encoder. El USB-C queda orientado para programación y depuración.
 
@@ -161,7 +161,7 @@ Los cambios de REV B se definirán a partir de mediciones reales de REV A. Se co
 
 ## Estado
 
-**REV A · Diseño completo · DRC aprobado · Revisión 3D completa**
+**REV A · Diseño de esquemático/layout completo · DRC aprobado · Revisión 3D completa**
 
 Actualmente el proyecto pasa de la etapa de diseño PCB a fabricación del prototipo y bring-up estructurado. No se publican todavía resultados físicos que no hayan sido medidos.
 
