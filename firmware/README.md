@@ -1,6 +1,6 @@
 # Firmware Architecture
 
-Firmware is not yet published for REV A because the current project milestone is the completed hardware design.
+Firmware implementation for REV A is still pending. The current project milestone is the hardware design, so this document describes the planned firmware architecture only.
 
 The planned firmware responsibilities are:
 
