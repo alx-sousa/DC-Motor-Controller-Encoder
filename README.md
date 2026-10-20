@@ -21,7 +21,7 @@ REV A was developed to move beyond module-based prototyping and design the main 
 - 12 V protected power input with fuse, reverse-polarity P-channel MOSFET and TVS protection.
 - TPS54302-based 12 V → 5 V buck converter designed from the regulator IC and external passives.
 - DRV8871 motor driver with current-limit network, local decoupling, bulk capacitance and exposed-pad thermal design.
-- Incremental Hall encoder A/B interface with 3.3 V logic compatibility, series resistors and pull-ups.
+- Intended incremental Hall encoder A/B interface at 3.3 V, with series resistors and pull-ups; the exact encoder variant and output behavior remain to be verified.
 - Removable ESP32-C6 Super Mini on headers for programming, debugging and replacement.
 - Two-layer PCB with functional zoning, differentiated power/signal routing, GND pours, stitching vias and thermal vias.
 - DRC-clean design and 3D board review in EasyEDA Pro.
@@ -75,7 +75,7 @@ The assembly is used as a mechanical/integration reference for connector access,
 | Current-limit network | External ILIM resistor network |
 | Logic supply | Texas Instruments TPS54302DDCR buck regulator |
 | MCU | Removable ESP32-C6 Super Mini |
-| Encoder | Incremental Hall A/B interface at 3.3 V logic |
+| Encoder | Intended incremental Hall A/B interface at 3.3 V; exact encoder variant/output behavior to verify |
 | PCB | 2 layers · FR-4 · 1.6 mm · 1 oz copper |
 
 ## Power input and protection
@@ -121,7 +121,7 @@ The current-limit network establishes the intended regulation threshold for REV 
 
 ## Encoder and MCU interface
 
-The reference motor uses a two-channel incremental Hall encoder. REV A powers the encoder from the ESP32's **3.3 V rail** and routes channels A/B through simple input-conditioning networks before reaching the MCU.
+The reference motor uses a two-channel incremental Hall encoder. REV A is designed to power the encoder from the ESP32's **3.3 V rail** and route channels A/B through simple input-conditioning networks before reaching the MCU. The exact encoder variant and its output stage must be verified before physical operation.
 
 The removable ESP32-C6 Super Mini provides:
 
@@ -216,7 +216,7 @@ hardware/
 
 ## Project status
 
-**REV A · Design complete · DRC passed · 3D review complete**
+**REV A · Schematic/layout design complete · DRC passed · 3D review complete**
 
 The project is currently transitioning from PCB design to prototype fabrication and structured hardware bring-up. No fabricated-board measurements, motor-control performance or closed-loop results are claimed yet.
 
